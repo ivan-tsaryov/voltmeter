@@ -1,0 +1,225 @@
+html *:not(.value tr:first-child) {
+    font-family: OpenSansRegular !important;
+}
+
+#container {
+    width: 100%;
+    max-width: 1480px;
+    margin: 0 auto;
+    position: relative;
+    min-height: 55px;
+}
+
+#help {
+    font-size: 15px;
+    font-weight: bold;
+    font-family: OpenSansRegular;
+    margin: 0 auto;
+    padding-top: 10px;
+    text-align: center;
+    display: none;
+    width: 100%;
+    position: absolute;
+    z-index: 4;
+}
+
+#help button {
+    font-size: 13px;
+}
+
+#device {
+    width: 100%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.indicators, .controllers {
+    visibility: hidden;
+    width: 100%;
+    height: auto;
+    position: absolute; top: 0; left: 0;
+    z-index: 3;
+}
+
+area {
+    cursor: pointer;
+    position: absolute;
+    z-index: 4;
+}
+
+#tabs {
+    font-size: 17px;
+}
+
+#tabs .ui-tabs-panel {
+    min-height: 200px;
+    height: 550px;
+    overflow: auto;
+    width: auto;
+}
+
+#tab-1, #tab-2 {
+    font-size: 80%;
+    width: 100%;
+}
+
+#tab-1 h2 {
+    font-weight: bold;
+    font-size: 140%;
+}
+
+#mode_list {
+    line-height: 25px;
+}
+
+#exercises button {
+    background: none;
+    border: none;
+}
+
+.ex_content {
+    text-decoration: none;
+    line-height: 25px;
+}
+
+.ex_content, #tab-2 button {
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+.ex_content span {
+    font-size: 13px;
+}
+
+#exercises li:hover {
+    cursor: pointer;
+}
+
+.qtip-content{
+    text-align: justify;
+    font-size: 13px;
+    max-width: 500px;
+}
+
+.qtip-titlebar {
+    font-size: 16px;
+}
+
+.values {
+    font-weight: normal;
+    color: #555555;
+    font-size: 17px;
+    text-shadow: 1px 1px 0px #fff;
+    background: #eaebec;
+    margin: 20px;
+    border: #ccc 1px solid;
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+
+    -moz-box-shadow: 0 1px 2px #d1d1d1;
+    -webkit-box-shadow: 0 1px 2px #d1d1d1;
+    box-shadow: 0 1px 2px #d1d1d1;
+}
+table tr:first-child {
+    font-family: "Cambria Math";
+}
+
+table th {
+    padding:21px 25px 22px 25px;
+    border: 1px solid #e0e0e0;
+
+    background: #ededed;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ededed), to(#ebebeb));
+    background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
+}
+table th:first-child {
+    text-align: left;
+    padding-left:20px;
+}
+table tr:first-child th:first-child {
+    -moz-border-radius-topleft:3px;
+    -webkit-border-top-left-radius:3px;
+    border-top-left-radius:3px;
+}
+table tr:first-child th:last-child {
+    -moz-border-radius-topright:3px;
+    -webkit-border-top-right-radius:3px;
+    border-top-right-radius:3px;
+}
+table tr {
+    text-align: center;
+    padding-left:20px;
+}
+table td:first-child {
+    text-align: left;
+    padding-left:20px;
+    border-left: 0;
+}
+table td {
+    padding:18px;
+    border-top: 1px solid #ffffff;
+    border-bottom:1px solid #e0e0e0;
+    border-left: 1px solid #e0e0e0;
+
+    background: #fafafa;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fbfbfb), to(#fafafa));
+    background: -moz-linear-gradient(top,  #fbfbfb,  #fafafa);
+}
+table tr.even td {
+    background: #f6f6f6;
+    background: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#f6f6f6));
+    background: -moz-linear-gradient(top,  #f8f8f8,  #f6f6f6);
+}
+table tr:last-child td {
+    border-bottom:0;
+}
+table tr:last-child td:first-child {
+    -moz-border-radius-bottomleft:3px;
+    -webkit-border-bottom-left-radius:3px;
+    border-bottom-left-radius:3px;
+}
+table tr:last-child td:last-child {
+    -moz-border-radius-bottomright:3px;
+    -webkit-border-bottom-right-radius:3px;
+    border-bottom-right-radius:3px;
+}
+
+.radio {
+    position: absolute;
+    z-index: -1000;
+    left: -1000px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    padding: 0;
+    border: 0;
+}
+
+.radio + .label {
+    padding-left: 22px;
+    height: 17px;
+    display: inline-block;
+    line-height: 15px;
+    font-size: 15px;
+    vertical-align: middle;
+    cursor: pointer;
+    background-position: 0 0;
+}
+
+.radio:checked + .label {
+    background-position: 0 -17px;
+}
+.label {
+    background: url(../img/radio.png) no-repeat;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}

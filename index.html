@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head lang="ru">
+    <meta charset="UTF-8">
+    <title>Вольтметр В7-40</title>
+
+    <link rel="stylesheet" type="text/css" href="css/library/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/library/jquery.qtip.css">
+    <link rel="stylesheet" type="text/css" href="css/fonts.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script type="text/javascript" src="js/library/jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="js/library/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/library/jquery.maphilight.js"></script>
+    <script type="text/javascript" src="js/library/jquery.qtip.js"></script>
+    <script type="text/javascript" src="js/init.js"></script>
+    <script type="text/javascript" src="js/device.js"></script>
+    <script type="text/javascript" src="js/deviceControllers.js"></script>
+    <script type="text/javascript" src="js/modeController.js"></script>
+    <script type="text/javascript" src="js/training.js"></script>
+    <script type="text/javascript" src="js/help.js"></script>
+    <script type="text/javascript" src="js/jqueryFunctions.js"></script>
+    <script type="text/javascript" src="js/domHandlers.js"></script>
+</head>
+<body>
+
+<div id="container">
+    <div id="help">
+        <button id="previous">Предыдущий</button>
+        Внимание, включён режим справки. Для навигации по элементам используйте мышь или кнопки
+        <button id="next">Следующий</button>
+    </div>
+    <img id="device" src="img/voltmeter.png" alt="Изображение выключенного устройства" usemap="#map">
+
+    <img class="indicators" id="sign_minus" alt="Знак минус" src="img/sign_minus.png">
+    <img class="indicators" id="sign_plus" alt="Знак плюс" src="img/sign_plus.png">
+    <img class="indicators" id="num_1_1" alt="Число 1 на 1 сегменте" src="img/num_1_1.png">
+    <img class="indicators" id="limit_1" alt="Точка на 1 сегменте" src="img/limit_1.png">
+    <img class="indicators" id="num_2_0" alt="Число 0 на 2 сегменте" src="img/num_2_0.png">
+    <img class="indicators" id="num_2_1" alt="Число 1 на 2 сегменте" src="img/num_2_1.png">
+    <img class="indicators" id="num_2_2" alt="Число 2 на 2 сегменте" src="img/num_2_2.png">
+    <img class="indicators" id="num_2_3" alt="Число 3 на 2 сегменте" src="img/num_2_3.png">
+    <img class="indicators" id="num_2_4" alt="Число 4 на 2 сегменте" src="img/num_2_4.png">
+    <img class="indicators" id="num_2_5" alt="Число 5 на 2 сегменте" src="img/num_2_5.png">
+    <img class="indicators" id="num_2_6" alt="Число 6 на 2 сегменте" src="img/num_2_6.png">
+    <img class="indicators" id="num_2_7" alt="Число 7 на 2 сегменте" src="img/num_2_7.png">
+    <img class="indicators" id="num_2_8" alt="Число 8 на 2 сегменте" src="img/num_2_8.png">
+    <img class="indicators" id="num_2_9" alt="Число 9 на 2 сегменте" src="img/num_2_9.png">
+    <img class="indicators" id="limit_2" alt="Точка на 2 сегменте" src="img/limit_2.png">
+    <img class="indicators" id="num_3_0" alt="Число 0 на 3 сегменте" src="img/num_3_0.png">
+    <img class="indicators" id="num_3_1" alt="Число 1 на 3 сегменте" src="img/num_3_1.png">
+    <img class="indicators" id="num_3_2" alt="Число 2 на 3 сегменте" src="img/num_3_2.png">
+    <img class="indicators" id="num_3_3" alt="Число 3 на 3 сегменте" src="img/num_3_3.png">
+    <img class="indicators" id="num_3_4" alt="Число 4 на 3 сегменте" src="img/num_3_4.png">
+    <img class="indicators" id="num_3_5" alt="Число 5 на 3 сегменте" src="img/num_3_5.png">
+    <img class="indicators" id="num_3_6" alt="Число 6 на 3 сегменте" src="img/num_3_6.png">
+    <img class="indicators" id="num_3_7" alt="Число 7 на 3 сегменте" src="img/num_3_7.png">
+    <img class="indicators" id="num_3_8" alt="Число 8 на 3 сегменте" src="img/num_3_8.png">
+    <img class="indicators" id="num_3_9" alt="Число 9 на 3 сегменте" src="img/num_3_9.png">
+    <img class="indicators" id="limit_3" alt="Точка на 3 сегменте" src="img/limit_3.png">
+    <img class="indicators" id="num_4_0" alt="Число 0 на 4 сегменте" src="img/num_4_0.png">
+    <img class="indicators" id="num_4_1" alt="Число 1 на 4 сегменте" src="img/num_4_1.png">
+    <img class="indicators" id="num_4_2" alt="Число 2 на 4 сегменте" src="img/num_4_2.png">
+    <img class="indicators" id="num_4_3" alt="Число 3 на 4 сегментеа" src="img/num_4_3.png">
+    <img class="indicators" id="num_4_4" alt="Число 4 на 4 сегменте" src="img/num_4_4.png">
+    <img class="indicators" id="num_4_5" alt="Число 5 на 4 сегменте" src="img/num_4_5.png">
+    <img class="indicators" id="num_4_6" alt="Число 6 на 4 сегменте" src="img/num_4_6.png">
+    <img class="indicators" id="num_4_7" alt="Число 7 на 4 сегменте" src="img/num_4_7.png">
+    <img class="indicators" id="num_4_8" alt="Число 8 на 4 сегменте" src="img/num_4_8.png">
+    <img class="indicators" id="num_4_9" alt="Число 9 на 4 сегменте" src="img/num_4_9.png">
+    <img class="indicators" id="limit_4" alt="Точка на 4 сегменте" src="img/limit_4.png">
+    <img class="indicators" id="num_5_0" alt="Число 0 на 5 сегменте" src="img/num_5_0.png">
+    <img class="indicators" id="num_5_1" alt="Число 1 на 5 сегменте" src="img/num_5_1.png">
+    <img class="indicators" id="num_5_2" alt="Число 2 на 5 сегменте" src="img/num_5_2.png">
+    <img class="indicators" id="num_5_3" alt="Число 3 на 5 сегменте" src="img/num_5_3.png">
+    <img class="indicators" id="num_5_4" alt="Число 4 на 5 сегменте" src="img/num_5_4.png">
+    <img class="indicators" id="num_5_5" alt="Число 5 на 5 сегменте" src="img/num_5_5.png">
+    <img class="indicators" id="num_5_6" alt="Число 6 на 5 сегменте" src="img/num_5_6.png">
+    <img class="indicators" id="num_5_7" alt="Число 7 на 5 сегменте" src="img/num_5_7.png">
+    <img class="indicators" id="num_5_8" alt="Число 8 на 5 сегменте" src="img/num_5_8.png">
+    <img class="indicators" id="num_5_9" alt="Число 9 на 5 сегменте" src="img/num_5_9.png">
+    <img class="indicators" id="limit_5" alt="Точка на 5 сегменте" src="img/limit_5.png">
+    <img class="indicators" id="unit_1" alt="Верхняя точка" src="img/unit_1.png">
+    <img class="indicators" id="unit_2" alt="Средняя точка" src="img/unit_2.png">
+    <img class="indicators" id="unit_3" alt="Нижняя точка" src="img/unit_3.png">
+    <img class="indicators" id="led_left" alt="Диод уменьшения предела" src="img/led_left.png">
+    <img class="indicators" id="led_avp" alt="Диод АВП" src="img/led_avp.png">
+    <img class="indicators" id="led_right" alt="Диод увеличения предела" src="img/led_right.png">
+    <img class="indicators" id="led_Udc" alt="Диод постоянного напряжения" src="img/led_Udc.png">
+    <img class="indicators" id="led_Uac" alt="Диод переменного напряжения" src="img/led_Uac.png">
+    <img class="indicators" id="led_R" alt="Диод сопротивления" src="img/led_R.png">
+    <img class="indicators" id="led_Idc" alt="Диод постоянного тока" src="img/led_Idc.png">
+    <img class="indicators" id="led_Iac" alt="Диод переменного тока" src="img/led_Iac.png">
+    <img class="controllers" id="wire_I" alt="Провод измерения токов" src="img/wire_I.png" usemap="#map">
+    <img class="controllers" id="wire_0" alt="Общий провод" src="img/wire_0.png" usemap="#map">
+    <img class="controllers" id="wire_UR" alt="Провод измерения U,R" src="img/wire_UR.png" usemap="#map">
+    <img class="controllers" id="button_Iac" alt="Кнопка переменного тока" src="img/button_Iac.png" usemap="#map">
+    <img class="controllers" id="button_Idc" alt="Кнопка постоянного тока" src="img/button_Idc.png" usemap="#map">
+    <img class="controllers" id="button_R" alt="Кнопка сопротивления" src="img/button_R.png" usemap="#map">
+    <img class="controllers" id="button_Uac" alt="Кнопка переменного напряжения" src="img/button_Uac.png" usemap="#map">
+    <img class="controllers" id="button_Udc" alt="Кнопка постоянного напряжения" src="img/button_Udc.png" usemap="#map">
+    <img class="controllers" id="button_right" alt="Кнопка увеличения предела" src="img/button_right.png" usemap="#map">
+    <img class="controllers" id="button_avp" alt="Кнопка АВП" src="img/button_avp.png" usemap="#map">
+    <img class="controllers" id="button_left" alt="Кнопка уменьшени предела" src="img/button_left.png" usemap="#map">
+    <img class="controllers" id="switcher" alt="Переключатель 'СЕТЬ'" src="img/switcher.png" usemap="#map">
+</div>
+
+<map name="map" id="map">
+    <area data-name="switcher" shape="rect" coords="324,296,348,361">
+    <area data-name="display" shape="rect" coords="398,194,785,309">
+    <area data-name="button_left" shape="rect" coords="841,268,882,310">
+    <area data-name="button_avp" shape="rect" coords="899,269,940,310">
+    <area data-name="button_right" shape="rect" coords="957,270,997,310">
+    <area data-name="button_Udc" shape="rect" coords="1034,269,1075,310">
+    <area data-name="button_Uac" shape="rect" coords="1092,269,1132,309">
+    <area data-name="button_R" shape="rect" coords="1150,269,1191,309">
+    <area data-name="button_Idc" shape="rect" coords="1208,270,1248,310">
+    <area data-name="button_Iac" shape="rect" coords="1266,270,1306,309">
+    <area data-name="wire_UR" shape="rect" coords="1357,186,1408,237">
+    <area data-name="wire_0" shape="rect" coords="1355,263,1408,315">
+    <area data-name="wire_I" shape="rect" coords="1356,339,1408,393">
+</map>
+
+<div id="tabs">
+    <ul>
+        <li><a href="#tab-1">Меню</a></li>
+        <li><a href="#tab-2">Входные сигналы</a></li>
+    </ul>
+    <div id="tab-1">
+        <h2>Общие сведения о приборе</h2>
+        <div align="justify">
+            Вольтметр В7-40 - высококачественный цифровой универсальный прибор, предназначенный для измерения постоянного и переменного напряжений, силы токов и сопротивления постоянному току.
+        </div>
+
+        <h3 id="mode_header"><span>Текущий режим: Режим эмулятора</span></h3>
+        <div id="mode_list">
+            <input id="r1" class="radio" type="radio" checked name="mode" data-name="emulator">
+            <label for="r1" class="label">Режим эмулятора</label>
+            <br>
+            <input id="r2" class="radio" type="radio" name="mode" data-name="help">
+            <label for="r2" class="label">Режим справки</label>
+            <br>
+            <input id="r3" class="radio" type="radio" name="mode" data-name="training">
+            <label for="r3" class="label">Режим обучения</label>
+            <br>
+            <input id="r4" class="radio" type="radio" name="mode" data-name="control">
+            <label for="r4" class="label">Режим контроля</label>
+        </div>
+
+        <h4 id="help_header" style="display: none">Элементы управления и индикаторы</h4>
+        <div>
+            <a href="#device" onclick="guide(0);">Нажмите сюда, чтобы пройти краткий обучающий курс по элементам управления устройства</a>
+        </div>
+
+        <h4 id="docs_header" style="display: none">Документация</h4>
+        <div id="docs">
+            <h6>1. Назначение</h6>
+            <div id="part1"></div>
+            <h6>2. Комплект поставки</h6>
+            <div id="part2"></div>
+            <h6>3. Технические данные</h6>
+            <div id="part3"></div>
+            <h6>4. Общие указания по эксплуатации</h6>
+            <div id="part4"></div>
+            <h6>5. Меры предосторожности</h6>
+            <div id="part5"></div>
+            <h6>6. Подготовка к работе</h6>
+            <div id="part6"></div>
+            <h6>7. Порядок работы</h6>
+            <div id="part7"></div>
+        </div>
+
+        <h4 id="exercises_header" style="display: none"><span>Упражнения</span></h4>
+        <div id="exercises">
+            <button id="1">Измерение постоянного напряжения</button>
+            <br>
+            <button id="2">Измерение переменного напряжения</button>
+            <br>
+            <button id="3">Измерение сопротивления</button>
+            <br>
+            <button id="4">Измерение постоянного тока</button>
+            <br>
+            <button id="5">Измерение переменного тока</button>
+        </div>
+
+        <h4 id="selected_exercise_header" style="display: none"><span></span></h4>
+        <div>
+            <div data-name="1" class="ex_content">
+                <ol>
+                    <li>Задать значения величин
+                        <br><span>Выберите значения из наборов ниже или впишите свои</span>
+                        <table class="values">
+                            <tr>
+                                <th></th>
+                                <th>U&#9107;, В</th>
+                                <th>U~, В</th>
+                                <th>R, Ом</th>
+                                <th>I&#9107;, А</th>
+                                <th>I~, А</th>
+                            </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio5" class="radio" type="radio" name="set"><label for="radio5" class="label"></label>
+                                    </td>
+                                    <td>-20</td>
+                                    <td>32.1</td>
+                                    <td>40</td>
+                                    <td>1.569</td>
+                                    <td>0.423</td>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio6" class="radio" type="radio" name="set"><label for="radio6" class="label"></label>
+                                    </td>
+                                    <td>20.5</td>
+                                    <td>13.9</td>
+                                    <td>23</td>
+                                    <td>-0.4981</td>
+                                    <td>1.6095</td>
+                                </tr>
+                                <tr class="fields">
+                                    <td>
+                                        <input id="radio7" class="radio" type="radio" name="set"><label for="radio7" class="label"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="nextStep">Продолжить</button>
+                        </li>
+                        <li>Включить прибор
+                            <br> <span>Установить тумблер "СЕТЬ" в положение "ВКЛ"</span>
+
+                        </li>
+                    <li>Выбрать род работы
+                        <br> <span>Нажмите кнопку для измерения постоянного напряжения</span>
+                    </li>
+                        <li>Подключить кабель K1
+                            <br> <span>Подключите кабель ко входному гнезду для измерения напряжений</span>
+
+                        </li>
+                        <li>Подключить кабель K2
+                            <br> <span>Подключите кабель ко входному гнезду общего провода</span>
+
+                        </li>
+                    </ol>
+                </div>
+                <div data-name="2" class="ex_content" style="display: none">
+                    <ol>
+                        <li>Задать значения величин
+                            <br> <span>Выберите значения из наборов ниже или впишите свои</span>
+
+                            <table class="values">
+                                <tr>
+                                    <th></th>
+                                    <th>U&#9107;, В</th>
+                                    <th>U~, В</th>
+                                    <th>R, Ом</th>
+                                    <th>I&#9107;, А</th>
+                                    <th>I~, А</th>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio8" class="radio" type="radio" name="set"><label for="radio8" class="label"></label>
+                                    </td>
+                                    <td>-20</td>
+                                    <td>32.1</td>
+                                    <td>40</td>
+                                    <td>1.569</td>
+                                    <td>0.423</td>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio9" class="radio" type="radio" name="set"><label for="radio9" class="label"></label>
+                                    </td>
+                                    <td>20.5</td>
+                                    <td>13.9</td>
+                                    <td>23</td>
+                                    <td>-0.4981</td>
+                                    <td>1.6095</td>
+                                </tr>
+                                <tr class="fields">
+                                    <td>
+                                        <input id="radio10" class="radio" type="radio" name="set"><label for="radio10" class="label"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="nextStep">Продолжить</button>
+                        </li>
+                        <li>Включить прибор
+                            <br> <span>Установить тумблер "СЕТЬ" в положение "ВКЛ"</span>
+                        </li>
+                        <li>Выбрать род работы
+                            <br> <span>Нажмите кнопку для измерения переменного напряжения</span>
+                        </li>
+                        <li>Подключить кабель K1
+                            <br> <span>Подключите кабель ко входному гнезду для измерения напряжений</span>
+                        </li>
+                        <li>Подключить кабель K2
+                            <br> <span>Подключите кабель ко входному гнезду общего провода</span>
+                        </li>
+                    </ol>
+                </div>
+                <div data-name="3" class="ex_content" style="display: none">
+                    <ol>
+                        <li>Задать значения величин
+                            <br> <span>Выберите значения из наборов ниже или впишите свои</span>
+
+                            <table class="values">
+                                <tr>
+                                    <th></th>
+                                    <th>U&#9107;, В</th>
+                                    <th>U~, В</th>
+                                    <th>R, Ом</th>
+                                    <th>I&#9107;, А</th>
+                                    <th>I~, А</th>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio11" class="radio" type="radio" name="set"><label for="radio11" class="label"></label>
+                                    </td>
+                                    <td>-20</td>
+                                    <td>32.1</td>
+                                    <td>40</td>
+                                    <td>1.569</td>
+                                    <td>0.423</td>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio12" class="radio" type="radio" name="set"><label for="radio12" class="label"></label>
+                                    </td>
+                                    <td>20.5</td>
+                                    <td>13.9</td>
+                                    <td>23</td>
+                                    <td>-0.4981</td>
+                                    <td>1.6095</td>
+                                </tr>
+                                <tr class="fields">
+                                    <td>
+                                        <input id="radio13" class="radio" type="radio" name="set"><label for="radio13" class="label"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="nextStep">Продолжить</button>
+                        </li>
+                        <li>Включить прибор
+                            <br> <span>Установить тумблер "СЕТЬ" в положение "ВКЛ"</span>
+                        </li>
+                        <li>Выбрать род работы
+                            <br> <span>Нажмите кнопку для измерения сопротивления</span>
+                        </li>
+                        <li>Подключить кабель K1
+                            <br> <span>Подключите кабель ко входному гнезду для измерения сопротивлений</span>
+                        </li>
+                        <li>Подключить кабель K2
+                            <br> <span>Подключите кабель ко входному гнезду общего провода</span>
+                        </li>
+                    </ol>
+                </div>
+                <div data-name="4" class="ex_content" style="display: none">
+                    <ol>
+                        <li>Задать значения величин
+                            <br> <span>Выберите значения из наборов ниже или впишите свои</span>
+
+                            <table class="values">
+                                <tr>
+                                    <th></th>
+                                    <th>U&#9107;, В</th>
+                                    <th>U~, В</th>
+                                    <th>R, Ом</th>
+                                    <th>I&#9107;, А</th>
+                                    <th>I~, А</th>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio14" class="radio" type="radio" name="set"><label for="radio14" class="label"></label>
+                                    </td>
+                                    <td>-20</td>
+                                    <td>32.1</td>
+                                    <td>40</td>
+                                    <td>1.569</td>
+                                    <td>0.423</td>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio15" class="radio" type="radio" name="set"><label for="radio15" class="label"></label>
+                                    </td>
+                                    <td>20.5</td>
+                                    <td>13.9</td>
+                                    <td>23</td>
+                                    <td>-0.4981</td>
+                                    <td>1.6095</td>
+                                </tr>
+                                <tr class="fields">
+                                    <td>
+                                        <input id="radio16" class="radio" type="radio" name="set"><label for="radio16" class="label"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="nextStep">Продолжить</button>
+                        </li>
+                        <li>Включить прибор
+                            <br> <span>Установить тумблер "СЕТЬ" в положение "ВКЛ"</span>
+                        </li>
+                        <li>Выбрать род работы
+                            <br> <span>Нажмите кнопку для измерения постоянного тока</span>
+                        </li>
+                        <li>Подключить кабель K1
+                            <br> <span>Подключите кабель ко входному гнезду для измерения токов</span>
+                        </li>
+                        <li>Подключить кабель K2
+                            <br> <span>Подключите кабель ко входному гнезду общего провода</span>
+                        </li>
+                    </ol>
+                </div>
+                <div data-name="5" class="ex_content" style="display: none">
+                    <ol>
+                        <li>Задать значения величин
+                            <br> <span>Выберите значения из наборов ниже или впишите свои</span>
+
+                            <table class="values">
+                                <tr>
+                                    <th></th>
+                                    <th>U&#9107;, В</th>
+                                    <th>U~, В</th>
+                                    <th>R, Ом</th>
+                                    <th>I&#9107;, А</th>
+                                    <th>I~, А</th>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio17" class="radio" type="radio" name="set"><label for="radio17" class="label"></label>
+                                    </td>
+                                    <td>-20</td>
+                                    <td>32.1</td>
+                                    <td>40</td>
+                                    <td>1.569</td>
+                                    <td>0.423</td>
+                                </tr>
+                                <tr class="set">
+                                    <td>
+                                        <input id="radio18" class="radio" type="radio" name="set"><label for="radio18" class="label"></label>
+                                    </td>
+                                    <td>20.5</td>
+                                    <td>13.9</td>
+                                    <td>23</td>
+                                    <td>-0.4981</td>
+                                    <td>1.6095</td>
+                                </tr>
+                                <tr class="fields">
+                                    <td>
+                                        <input id="radio19" class="radio" type="radio" name="set"><label for="radio19" class="label"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                    <td>
+                                        <label><input type="text" size="5"></label>
+                                    </td>
+                                </tr>
+                            </table>
+                            <button class="nextStep">Продолжить</button>
+                        </li>
+                        <li>Включить прибор
+                            <br> <span>Установить тумблер "СЕТЬ" в положение "ВКЛ"</span>
+                        </li>
+                        <li>Выбрать род работы
+                            <br> <span>Нажмите кнопку для измерения переменного тока</span>
+                        </li>
+                        <li>Подключить кабель K1
+                            <br> <span>Подключите кабель ко входному гнезду для измерения токов</span>
+                        </li>
+                        <li>Подключить кабель K2
+                            <br> <span>Подключите кабель ко входному гнезду общего провода</span>
+                        </li>
+                    </ol>
+                </div>
+        </div>
+    </div>
+    <div id="tab-2">
+        <h3>Выберите значения из наборов ниже или впишите свои</h3>
+        <div>
+            <table class="values">
+                <tr>
+                    <th></th>
+                    <th>U&#9107;, В</th>
+                    <th>U~, В</th>
+                    <th>R, Ом</th>
+                    <th>I&#9107;, А</th>
+                    <th>I~, А</th>
+                </tr>
+                <tr class="set">
+                    <td>
+                        <input id="radio20" class="radio" type="radio" name="set"><label for="radio20" class="label"></label>
+                    </td>
+                    <td>-20</td>
+                    <td>32.1</td>
+                    <td>40</td>
+                    <td>1.569</td>
+                    <td>0.423</td>
+                </tr>
+                <tr class="set">
+                    <td>
+                        <input id="radio21" class="radio" type="radio" name="set"><label for="radio21" class="label"></label>
+                    </td>
+                    <td>20.5</td>
+                    <td>13.9</td>
+                    <td>23</td>
+                    <td>-0.4981</td>
+                    <td>1.6095</td>
+                </tr>
+                <tr class="fields">
+                    <td>
+                        <input id="radio22" class="radio" type="radio" name="set"><label for="radio22" class="label"></label>
+                    </td>
+                    <td>
+                        <label><input type="text" size="5"></label>
+                    </td>
+                    <td>
+                        <label><input type="text" size="5"></label>
+                    </td>
+                    <td>
+                        <label><input type="text" size="5"></label>
+                    </td>
+                    <td>
+                        <label><input type="text" size="5"></label>
+                    </td>
+                    <td>
+                        <label><input type="text" size="5"></label>
+                    </td>
+                </tr>
+            </table>
+            <button id="setValues">Задать значения</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>
